@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: eshop-1
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: eks-bp-ns
+    server: {{ .Values.spec.destination.server }}
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: od-artefacts/65aa26901fb5a817da0e1ee1/appBlueprints/eshop-1/v1
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
