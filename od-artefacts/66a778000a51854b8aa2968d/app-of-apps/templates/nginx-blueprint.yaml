@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-blueprint
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: eks-blueprint-test
+    server: {{ .Values.spec.destination.server }}
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: od-artefacts/66a778000a51854b8aa2968d/appBlueprints/nginx-blueprint/v0
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
