@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
-    path: od-artefacts/66a778000a51854b8aa2968d/appBlueprints/nginx-blueprint/v0
+    path: od-artefacts/66a778000a51854b8aa2968d/appBlueprints/nginx-blueprint/v1
   syncPolicy:
     automated:
       prune: true
